@@ -7,7 +7,7 @@ This project automates the process of filling out a Google Form using Selenium, 
 1. **Clone the Repository**:
    ```bash
    git clone https://github.com/palakbansal8810/Medius-Technologies-Private-Limited.git
-   cd form_filling
+   cd Medius-Technologies-Private-Limited
    ```
 
 2. **Install Libraries**:
@@ -28,6 +28,8 @@ This project automates the process of filling out a Google Form using Selenium, 
    ```
 
 5.  Open a web browser and navigate to `http://127.0.0.1:5000/` to access the application.
+
+6. Click on Send Email to 
 
 ## Application Components
 

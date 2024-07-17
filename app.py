@@ -20,6 +20,7 @@ app.config['MAIL_USE_SSL'] = True
 mail = Mail(app)
 
 # filling google form and capturing ss
+@app.route('/fill_form', methods=['POST'])
 def filling_google_form():
     try:
         driver = webdriver.Chrome()
@@ -79,21 +80,20 @@ def filling_google_form():
         WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, '//div[contains(text(), "Your response has been recorded.")]')))
 
         # Saving the screenshot taken
-        driver.save_screenshot('confirmation_screenshot.png')
+        driver.save_screenshot('Medius-Technologies-Private-Limited/confirmation_screenshot.png')
         screenshot_path = 'confirmation_screenshot.png'
         driver.quit()
-
-        return screenshot_path
+        if screenshot_path:
+            return 'path of screenshot of confirmation\n'+ screenshot_path
 
     except Exception as e:
         print(f"Error occurred: {str(e)}")
         return None
 
-
 @app.route('/send_email', methods=['POST'])
 def send_email():
 # Fill Google Form and capture screenshot
-    screenshot_path = filling_google_form()
+    screenshot_path = 'confirmation_screenshot.png'
 
     if screenshot_path:
         try:
@@ -139,7 +139,7 @@ Best regards,
 Palak Bansal'''
         
             sender = 'palakbansal8810@gmail.com'
-            recipients = ['tech@themedius.ai'] 
+            recipients = ['palakb8810@gmail.com'] 
             cc = 'hr@themedius.ai'
 
 # Screenshot
@@ -176,4 +176,3 @@ def index():
 
 if __name__ == '__main__':
     app.run(debug=True)  
-
