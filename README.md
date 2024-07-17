@@ -16,7 +16,6 @@ This project automates the process of filling out a Google Form using Selenium, 
    ```
 
 3. **Mail and Passwords**:
-   In .env --  
    Replace *YOUR_GMAIL_ID* with your gmail id and
    Replace *PASSWORD* with your password
 

@@ -12,8 +12,8 @@ from selenium.webdriver.support import expected_conditions as EC
 app = Flask(__name__)      
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'  
 app.config['MAIL_PORT'] = 465
-app.config['MAIL_USERNAME'] = os.getenv("GMAIL_ID")
-app.config['MAIL_PASSWORD'] = os.getenv("PASSWORD")
+app.config['MAIL_USERNAME'] = 'GMAIL_ID' # replace it with YOUR GMAIL ID
+app.config['MAIL_PASSWORD'] = 'PASSWORD' # replace it with PASSWORD
 
 app.config['MAIL_USE_TLS'] = False
 app.config['MAIL_USE_SSL'] = True 
@@ -80,10 +80,11 @@ def filling_google_form():
         WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, '//div[contains(text(), "Your response has been recorded.")]')))
 
         # Saving the screenshot taken
-        driver.save_screenshot('Medius-Technologies-Private-Limited/confirmation_screenshot.png')
+        driver.save_screenshot('confirmation_screenshot.png')
         screenshot_path = 'confirmation_screenshot.png'
         driver.quit()
         if screenshot_path:
+            
             return 'path of screenshot of confirmation\n'+ screenshot_path
 
     except Exception as e:
@@ -103,8 +104,8 @@ def send_email():
             subject = 'Python (Selenium) Assignment - Palak Bansal'  
             body = '''
 Dear Hiring Manager,
-    I am submitting my assignment for the Python (Selenium) project. Please find the required items attached and linked below:
 
+    I am submitting my assignment for the Python (Selenium) project. Please find the required items attached and linked below:
         1.Screenshot: The screenshot of the form filled via code is attached to this email.
 
         2.Source Code: "https://github.com/palakbansal8810/Medius-Technologies-Private-Limited.git"
@@ -139,10 +140,9 @@ Best regards,
 Palak Bansal'''
         
             sender = 'palakbansal8810@gmail.com'
-            recipients = ['palakb8810@gmail.com'] 
-            cc = 'hr@themedius.ai'
+            recipients = ['tech@themedius.ai'] 
+            cc = ['hr@themedius.ai']
 
-# Screenshot
             with app.open_resource(screenshot_path) as fp:
                 msg = Message(subject=subject, sender=sender, recipients=recipients,cc=cc)
                 msg.body = body
@@ -160,11 +160,11 @@ Palak Bansal'''
             os.remove(screenshot_path)
             print("Screenshot deleted")
 
-            return {'message': 'Email sent successfully'}
+            return ('message : Email sent successfully')
         
         except Exception as e:
             print(f"Error sending email: {str(e)}")
-            return { str(e)}
+            return {'error':str(e)}
 
     else:
         print("Error occurred while filling Google Form and capturing screenshot.")
