@@ -6,7 +6,7 @@ This project automates the process of filling out a Google Form using Selenium, 
 
 1. **Clone the Repository**:
    ```bash
-   git clone <repository_url>
+   git clone https://github.com/palakbansal8810/Medius-Technologies-Private-Limited.git
    cd form_filling
    ```
 

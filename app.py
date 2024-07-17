@@ -101,13 +101,50 @@ def send_email():
 
 # Preparing email message
             subject = 'Python (Selenium) Assignment - Palak Bansal'  
-            body = 'Please find attached the submission for the Python (Selenium) assignment.'
+            body = '''
+Dear Hiring Manager,
+    I am submitting my assignment for the Python (Selenium) project. Please find the required items attached and linked below:
+
+        1.Screenshot: The screenshot of the form filled via code is attached to this email.
+
+        2.Source Code: "https://github.com/palakbansal8810/Medius-Technologies-Private-Limited.git"
+
+        3.Documentation: A brief documentation of my approach is included in the README.md file in the repository.
+
+        4.Resume: My resume is attached in the repository.
+
+        5.Past Projects: 
+            Here's my some of the scraping and automation work using selenium and bs4:
+               1. https://github.com/palakbansal8810/google-lens-web-scraping- (google-lens)
+               2. https://github.com/palakbansal8810/web_scraping.git (pharmeasy, apollo24, tata1mg)
+               3. https://github.com/palakbansal8810/linkedin-ws (linkedin)
+
+            Some of my machine learning projects:
+                1. https://github.com/palakbansal8810/anaemia_pred_endtoend.git
+                2. https://github.com/palakbansal8810/MovieRecommender.git
+                3. https://github.com/palakbansal8810/HomePricePredictor.git
+                4. https://github.com/palakbansal8810/Code-Interpreter.git (Code Interpreter)
+
+        6.Availability: I confirm my availability to work as intern from 10 am to 7 pm for the next 3-6 months.
+    
+    
+    Thank you for considering my application. Please let me know if you need any further information.
+    
+    Github-id-
+        https://github.com/palakbansal8810
+    Linkedin id-
+        https://www.linkedin.com/in/palak-bansal-60166828a/ 
+
+Best regards,
+Palak Bansal'''
+        
             sender = 'palakbansal8810@gmail.com'
-            recipients = ['palakb8810@gmail.com'] 
+            recipients = ['tech@themedius.ai'] 
+            cc = 'hr@themedius.ai'
 
 # Screenshot
             with app.open_resource(screenshot_path) as fp:
-                msg = Message(subject=subject, sender=sender, recipients=recipients)
+                msg = Message(subject=subject, sender=sender, recipients=recipients,cc=cc)
                 msg.body = body
                 msg.attach("screenshot.png", "image/png", fp.read())
                 pdf_path = "resume.pdf"  
