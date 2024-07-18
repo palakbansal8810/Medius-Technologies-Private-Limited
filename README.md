@@ -16,10 +16,12 @@ This project automates the process of filling out a Google Form using Selenium, 
    ```
 
 3. **Mail and Passwords**:
+
+   in app.py-
    Replace *YOUR_GMAIL_ID* with your gmail id and
    Replace *PASSWORD* with your password
 
-*Note- if two-factor authentication is enabled for your gmail account, make a app-specific password, then replace *PASSWORD* with that password, *if not, use your gmail password.* 
+**Note- if two-factor authentication is enabled for your gmail account, make a app-specific password, then replace *PASSWORD* with that password, if not, use your gmail password.**
 
 4. **Run the app**:
    ```bash
